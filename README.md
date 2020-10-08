@@ -11,7 +11,7 @@ Frontend:
 Hitesh: HTML+CSS+JS, Flutter
 Raivat: HTML+CSS+JS, ReactJS
 Cedric: HTML+CSS+JS, Basic ReactJS
-Renata: HTML+CSS+JS
+Renata: HTML+CSS+JS, AngularJS
 Ryan: React, React Native
 Hongyu:
 
