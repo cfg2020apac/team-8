@@ -1,25 +1,31 @@
 # team-8
 
-Team name: 8ForChange
+# 8 for change
 
-Skillsets:
+# Skill set of members:
 
 Backend:
-3 to 3 for Flask and Firebase
 
-Frontend:
-Hitesh: HTML+CSS+JS, Flutter
-Raivat: HTML+CSS+JS, ReactJS
-Cedric: HTML+CSS+JS, Basic ReactJS
-Renata: HTML+CSS+JS, AngularJS
-Ryan: React, React Native
-Hongyu:
+| Tech        | People        |
+| ------------- |-------------| 
+| Flask (Python)      | Hitesh, Cedric, Renata D | 
+| NodeJS     | Ryan, Min Hui, Raivat     |
 
-ML/AI:
-Hongyu: ML, NLP, CV (Some experience)
-Cedric: NLP, Basics of NN
-Renata: Basic ML (Decision Trees, Classification)
-Raivat: Basic ML
-Hitesh: NLP, CV, Speech Processing, Data Science
-Ryan:
+Frontend: 
+
+| Tech        | People        |
+| ------------- |-------------| 
+| HTML, CSS and Vanilla JavaScript      | Hitesh, Cedric, Renata, Min Hui, Raivat | 
+| ReactJS     | Raivat, Cedric, Ryan, MinHui     |
+| ReactNative     | Ryan     |
+| Flutter    | Hitesh   |
+| Min Hui   | Android Studio   |
+
+Other skills
+
+| Tech        | People        |
+| ------------- |-------------| 
+| Basic ML     | Hongyu, Cedric, Renata, Raivat, Hitesh, Min Hui | 
+| NLP     | Hongyu, Cedric, Hitesh |
+| AWS     | Raivat   |
 
