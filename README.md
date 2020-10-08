@@ -17,6 +17,7 @@ Frontend:
 | ------------- |-------------| 
 | HTML, CSS and Vanilla JavaScript      | Hitesh, Cedric, Renata, Min Hui, Raivat | 
 | ReactJS     | Raivat, Cedric, Ryan, MinHui     |
+| AngularJS   | Renata    |
 | ReactNative     | Ryan     |
 | Flutter    | Hitesh   |
 | Min Hui   | Android Studio   |
