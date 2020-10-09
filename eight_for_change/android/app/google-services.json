@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "826393963371",
+    "firebase_url": "https://forchange-7d138.firebaseio.com",
+    "project_id": "forchange-7d138",
+    "storage_bucket": "forchange-7d138.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826393963371:android:de4f3556e01a35d8b7ba2e",
+        "android_client_info": {
+          "package_name": "com.example.eightForChange"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826393963371-79fmeh98t2qgvt7atqg2phpgloshqk1e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgH-ew6E4ZcFc6sRQAYH0S204bydB_xls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826393963371-79fmeh98t2qgvt7atqg2phpgloshqk1e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "826393963371-rgq4cm7olcfad75c3hsb8g3su6scuviu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eightForChange"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
