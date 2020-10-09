@@ -3,6 +3,11 @@ const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
 
+// const serviceAccount = require("./for-change-292011-e309d6a3b734.json");
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
 admin.initializeApp();
 const db = admin.firestore();
 
@@ -20,6 +25,19 @@ app.post("/write-doc", async (req, res) => {
   const docRef = db.collection(collection).doc(documentId);
   try {
     const r = await docRef.set(documentValue);
+    console.log("Write Success", r);
+    return res.status(200).end();
+  } catch (e) {
+    console.error("Write Failure", r);
+    return res.status(500).end();
+  }
+});
+
+app.post("/add-user", async (req, res) => {
+  const { email, password, userDetails } = req.body;
+  const docRef = db.collection("users").doc(email);
+  try {
+    const r = await docRef.set(userDetails);
     console.log("Write Success", r);
     return res.status(200).end();
   } catch (e) {
