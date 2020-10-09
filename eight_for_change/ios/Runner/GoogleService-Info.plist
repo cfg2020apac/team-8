@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>826393963371-rgq4cm7olcfad75c3hsb8g3su6scuviu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.826393963371-rgq4cm7olcfad75c3hsb8g3su6scuviu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCxuesiLwxsNooaCmmzg8fdbKHK1M8M2ho</string>
+	<key>GCM_SENDER_ID</key>
+	<string>826393963371</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.eightForChange</string>
+	<key>PROJECT_ID</key>
+	<string>forchange-7d138</string>
+	<key>STORAGE_BUCKET</key>
+	<string>forchange-7d138.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:826393963371:ios:b4204ec29f175965b7ba2e</string>
+	<key>DATABASE_URL</key>
+	<string>https://forchange-7d138.firebaseio.com</string>
+</dict>
+</plist>
