@@ -46,9 +46,11 @@ app.post("/add-user", async (req, res) => {
   }
 });
 
-app.get("/read-doc", async (req, res) => {
-  const { collection, documentId } = req.query;
-  const docRef = db.collection(collection).doc(documentId);
+
+// get event
+app.get("/event", async (req, res) => {
+  const { documentId } = req.query;
+  const docRef = db.collection("events").doc(documentId);
   try {
     const r = await docRef.get();
     console.log("Read Success", r);
@@ -62,4 +64,8 @@ app.get("/read-doc", async (req, res) => {
   }
 });
 
+//add event
+app.post("/event", async (req, res) => {
+  
+})
 exports.api = functions.https.onRequest(app);

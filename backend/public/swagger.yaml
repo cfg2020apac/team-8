@@ -1,77 +1,159 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Node Firebase API
   version: 1.0.0
+  title: 8forchange
+  license:
+    name: MIT
+servers:
+  - url: 'https://localhost:3000'
+paths:
+  /volunteer:
+    get:
+      summary: Details about a volunteer
+      operationId: listVolunteer
+      tags:
+        - user
+      parameters:
+        - name: id
+          in: query
+          description: ID of the volunteer
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Details about a volunteer
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Volunteer'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Add a volunteer
+      operationId: addVolunteer
+      requestBody:
+        description: Details of the volunteer
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Volunteer'
+      responses:
+        '200':
+          description: Addition of volunteer successful!
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /event:
+    get:
+      summary: Details about an event
+      operationId: getEvent
+      tags:
+        - event
+      parameters:
+        - name: id
+          in: query
+          description: ID of the event
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Details about an event
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Document:
+    Volunteer:
       type: object
+      required:
+        - id
+        - name
+        - birthdate
+        - sessionsCompleted
+        - email
+        - phone
       properties:
-        collection:
+        id:
+          type: integer
+          format: int64
+        name:
           type: string
-        documentId:
+        birthdate:
           type: string
-        documentValue:
-          type: object
-    User:
-      type: object
-      properties:
+        sessionsCompleted:
+          type: integer
+          format: int64
         email:
           type: string
-        password:
+        phone:
+          type: integer
+          format: int64
+    Event:
+      type: object
+      required:
+        - id
+        - name
+        - startDate
+        - endDate
+        - startTime
+        - endTime
+        - address
+        - area
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
           type: string
-        userDetails:
-          type: object
-  parameters:
-    collection:
-      name: collection
-      in: query
-      required: true
-      schema:
-        type: string
-    documentId:
-      name: documentId
-      in: query
-      required: true
-      schema:
-        type: string
-paths:
-  /read-doc:
-    get:
-      description: Reads a document
-      parameters:
-        - $ref: "#/components/parameters/collection"
-        - $ref: "#/components/parameters/documentId"
-      responses:
-        "200":
-          description: success
-        "500":
-          description: failure
-  /write-doc:
-    post:
-      summary: Write a document
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Document"
-      responses:
-        "200":
-          description: success
-        "500":
-          description: failure
-  /add-user:
-    post:
-      summary: Add a User
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/User"
-      responses:
-        "200":
-          description: success
-        "500":
-          description: failure
+        startDate:
+          type: string
+        endDate:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+        address:
+          type: string
+        area:
+          type: string
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
