@@ -3,6 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import './models/models.dart';
 import './models/result.dart';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart'; // For File Upload To Firestore
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart'; // For Image Picker
+import 'package:path/path.dart' as Path;
 
 class Event extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -66,6 +71,7 @@ class _TestFormState extends State<TestForm> {
         key: _formKey,
         child: Column(
           children: <Widget>[
+            Container(child: UploadingImage()),
             Container(
               alignment: Alignment.topCenter,
               width: halfMediaWidth,
@@ -226,7 +232,6 @@ class _TestFormState extends State<TestForm> {
               onPressed: () {
                 if (_formKey.currentState.validate()) {
                   _formKey.currentState.save();
-
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -240,6 +245,55 @@ class _TestFormState extends State<TestForm> {
         ));
   }
 }
+
+class UploadingImage extends StatefulWidget {
+  @override
+  _UploadingImageState createState() => _UploadingImageState();
+}
+
+class _UploadingImageState extends State<UploadingImage> {
+  File _imageFile;
+  final picker = ImagePicker();
+
+  Future pickImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _imageFile = File(pickedFile.path);
+    });
+  }
+
+  Future uploadImageToFirebase(BuildContext context) async {
+    String fileName = Path.basename(_imageFile.path);
+    StorageReference firebaseStorageRef =
+        FirebaseStorage.instance.ref().child('uploads/$fileName');
+    StorageUploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
+    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+    taskSnapshot.ref.getDownloadURL().then(
+          (value) => print("Done: $value"),
+        );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return IconButton(
+        icon: Icon(Icons.add),
+        // decoration: InputDecoration(
+        //   hintText: "Start Date",
+        //   contentPadding: EdgeInsets.all(15.0),
+        //   border: InputBorder.none,
+        //   filled: true,
+        //   fillColor: Colors.grey[200],
+        // ),
+        onPressed: () {
+          pickImage();
+          uploadImageToFirebase(context);
+        });
+  }
+}
+
+bool submit = false;
 
 class MyTextFormField extends StatelessWidget {
   final String hintText;

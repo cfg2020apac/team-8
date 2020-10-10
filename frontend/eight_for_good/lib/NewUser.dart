@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import './models/models.dart';
 import 'package:validators/validators.dart';
-import 'package:http/http.dart' as http;
 
 class Register extends StatelessWidget {
   @override
@@ -109,18 +108,9 @@ class _TestFormState extends State<TestForm> {
             RaisedButton(
               color: Colors.lightBlueAccent,
               child: Text('Submit', style: TextStyle(color: Colors.white)),
-              onPressed: () async {
+              onPressed: () {
                 if (_formKey.currentState.validate()) {
                   _formKey.currentState.save();
-
-                  final uri = 'https://forchange-7d138.web.app/add-volunteer';
-
-                  await http.post(uri, body: {
-                    'firstName': model.firstName,
-                    'lastNAme': model.lastName,
-                    'email': model.email,
-                    'password': model.password
-                  });
                   Navigator.pop(
                     context,
                   );
