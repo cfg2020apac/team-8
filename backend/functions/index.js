@@ -10,6 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.static('http://localhost:3000/service-worker.js'))
 
 app.get("/", (req, res) => {
   return res.status(200).send("Hello World!");
@@ -73,4 +74,8 @@ app.get("/get-authentication-match", async (req, res) => {
   }
 });
 
+//add event
+app.post("/event", async (req, res) => {
+  
+})
 exports.api = functions.https.onRequest(app);
