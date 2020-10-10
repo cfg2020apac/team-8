@@ -4,74 +4,75 @@ info:
   version: 1.0.0
 components:
   schemas:
-    Document:
+    Volunteer:
       type: object
       properties:
-        collection:
-          type: string
-        documentId:
-          type: string
-        documentValue:
-          type: object
-    User:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
         userDetails:
           type: object
+    Event:
+      type: object
+      properties:
+        eventDetails:
+          type: object
   parameters:
-    collection:
-      name: collection
+    username:
+      name: username
       in: query
       required: true
       schema:
         type: string
-    documentId:
-      name: documentId
+    password:
+      name: password
       in: query
       required: true
       schema:
         type: string
 paths:
-  /read-doc:
+  /add-volunteer:
+    post:
+      summary: Add a volunteer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Volunteer"
+      responses:
+        "200":
+          description: success
+        "500":
+          description: failure
+  /add-event:
+    post:
+      summary: Add an event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Event"
+      responses:
+        "200":
+          description: success
+        "500":
+          description: failure
+  /get-events:
     get:
-      description: Reads a document
+      description: Gets all events
+      responses:
+        "200":
+          description: success
+        "500":
+          description: failure
+  /get-authentication-match:
+    get:
+      description: Validates a user's attempt to login
       parameters:
-        - $ref: "#/components/parameters/collection"
-        - $ref: "#/components/parameters/documentId"
+        - $ref: "#/components/parameters/username"
+        - $ref: "#/components/parameters/password"
       responses:
         "200":
           description: success
         "500":
           description: failure
-  /write-doc:
-    post:
-      summary: Write a document
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Document"
-      responses:
-        "200":
-          description: success
-        "500":
-          description: failure
-  /add-user:
-    post:
-      summary: Add a User
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/User"
-      responses:
-        "200":
-          description: success
-        "500":
-          description: failure
+          
