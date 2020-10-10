@@ -122,7 +122,7 @@ class Notif extends StatelessWidget {
 			Row(
 			  mainAxisAlignment: MainAxisAlignment.end,
 			  children: <Widget>[
-			    TextButton(
+			    RaisedButton(
 			      child: const Text('I ACKNOWLEDGE'),
 			      onPressed: () {/* ... */},
 			    ),
@@ -142,7 +142,7 @@ class Notif extends StatelessWidget {
 			Row(
 			  mainAxisAlignment: MainAxisAlignment.end,
 			  children: <Widget>[
-			    TextButton(
+			    RaisedButton(
 			      child: const Text('I ACKNOWLEDGE'),
 			      onPressed: () {/* ... */},
 			    ),
@@ -157,7 +157,7 @@ class Notif extends StatelessWidget {
       Row(
 			  mainAxisAlignment: MainAxisAlignment.end,
 			  children: <Widget>[
-			    TextButton(
+			    RaisedButton(
 			      child: const Text('VIEW A'),
 			      onPressed: () {         
               Navigator.push(

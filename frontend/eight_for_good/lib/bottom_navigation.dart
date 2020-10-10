@@ -4,6 +4,8 @@ import 'display_events.dart';
 import 'profile.dart';
 import 'chat.dart';
 import 'login_page.dart';
+import 'rewards.dart';
+import 'notif.dart';
 
 class Home extends StatefulWidget {
  User user;
@@ -23,8 +25,8 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = [
    EventPage(),
-   Chat(),
-   Profile(),
+   Notif(),
+   Rewards(),
   ];
  @override
  Widget build(BuildContext context) {
