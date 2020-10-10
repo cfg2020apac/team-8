@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:eight_for_good/vol_home.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -149,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
                                           labelText: 'Password',
-                                          errorText: 'Username or password is incorrect!',
+                                          //errorText: 'Username or password is incorrect!',
                                         ),
                                         onSubmitted: (String value) {
                                           _myPassword.text = value;
@@ -223,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      VolunteerApp()));
+                                                      VolunteerApp(user: user, events: events)));
                                         //User user = await fetchPost(_myUsername.text);
                                       },
                                     ),
@@ -244,3 +246,110 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 }
+
+
+class User{
+  final int id;
+  final String username;
+  final String name;
+  final String roleType;
+  final String email;
+  final String date;
+  final List eventsSigned;
+  final String birthdate;
+
+
+  User(
+    {
+      this.id,
+      this.username,
+      this.name,
+      this.roleType,
+      this.email,
+      this.date,
+      this.eventsSigned,
+      this.birthdate
+    }
+  );
+}
+
+User user = User(id: 1, username: "hitesh", name: "hitesh", roleType: "V", email: "agarwal", date: "12/12/2020", eventsSigned: [], birthdate: "16/11/2020");
+
+class Event{
+  final int id;
+  final String title;
+  final String date;
+  final String time;
+  final String desc;
+  final String img;
+
+  Event(
+    {
+      this.id,
+      this.title,
+      this.date,
+      this.time,
+      this.desc,
+      this.img
+    }
+  );
+}
+
+Event event = Event(id: 1, title: "Plastic-Less July", date: "12/12/2019", time:"10:30AM", desc: "Plastic-Less July is a programme that encourages reduced usage of plastic. Together with our blossom friends, we can save the mother earth! Note that volunteers must be present for all the listed days.", img: "https://www.giving.sg/image/logo?img_id=8771842");
+
+List events = [event, event, event, event, event, event, event, event, event, event];
+
+/* 
+
+Future<bool> getid(String uname, String pcode, BuildContext context) async {
+  //print('entered');
+  var routes;
+  var weight;
+
+final response1 = await http.get('https://forchange-7d138.web.app/?username=${uname}');
+ 
+if (response1.statusCode == 200) {
+    final responsepass = await http.get(
+        'http://localhost:3333/users/auth/?username=${uname}&password=${pcode}');
+    if (responsepass.statusCode == 200) {
+      bool pass = (json.decode(responsepass.body))['result'];
+
+      if (pass == true) {
+        print('login succesful');
+        loginfail = false;
+
+        //User userdetails = User(id: (json.decode(response1.body))["id"], (json.decode(response1.body))["username"], ...)
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => MyHomePage(
+                      id: data.id, profDetails: userdetails, popRoutes: routes,
+                    )));
+      } else {
+        loginfail = true;
+                print("Username or Password is wrong");
+
+        return false;
+      }
+    }
+    else {
+    loginfail = true;
+
+    print('Username or Password is wrong');
+    return false;
+  }
+    
+  } else {
+    loginfail = true;
+
+    print('Username or Password is wrong');
+    return false;
+  }
+  return true;
+  
+}
+
+*/
+
+  

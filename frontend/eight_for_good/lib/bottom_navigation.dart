@@ -1,20 +1,28 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'events.dart';
+import 'display_events.dart';
 import 'profile.dart';
 import 'chat.dart';
+import 'login_page.dart';
 
 class Home extends StatefulWidget {
- @override
- State<StatefulWidget> createState() {
-    return _HomeState();
-  }
+ User user;
+ List events;
+
+Home({@required this.user, @required this.events});
+
+ _HomeState createState() => _HomeState(user: user, events: events);
 }
 
 class _HomeState extends State<Home> {
+  
+    User user;
+    List events;
+    _HomeState({@required this.user, @required this.events});
+  
   int _currentIndex = 0;
   final List<Widget> _children = [
-   Event(),
+   EventPage(),
    Chat(),
    Profile(),
   ];
@@ -28,15 +36,15 @@ class _HomeState extends State<Home> {
        items: [
          new BottomNavigationBarItem(
            icon: Icon(Icons.home),
-           title: Text('Home'),
+           title: Text('Events'),
          ),
          new BottomNavigationBarItem(
            icon: Icon(Icons.mail),
-           title: Text('Messages'),
+           title: Text('Notifications'),
          ),
          new BottomNavigationBarItem(
            icon: Icon(Icons.person),
-           title: Text('Profile')
+           title: Text('Rewards')
          )
        ],
      ),
